@@ -1,12 +1,13 @@
 package model;
 
-public class Model {
+public class Wish {
+    private int wishID;
     private String name;
     private int quantity;
     private String description;
     private double price;
 
-    public Model(String name, int quantity, String description, double price) {
+    public Wish(String name, int quantity, String description, double price) {
         this.name = name;
         this.quantity = quantity;
         this.description = description;
@@ -45,4 +46,15 @@ public class Model {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public int getWishID() {
+        return wishID;
+    }
+
+    public void setWishID(int wishID) {
+        this.wishID = wishID;
+    }
 }
+
+
+
