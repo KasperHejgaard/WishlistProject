@@ -1,10 +1,6 @@
 package repository;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
+import model.Wish;
+import java.sql.*;
 public class Repository {
 
     String url = System.getenv("url");
@@ -45,10 +41,6 @@ public Wish createWish(String name, int quantity, String description, double pri
         e.printStackTrace();
     }
 return wish;
-}
-
-
-
 }
 
     public int deleteWish(int id) {
