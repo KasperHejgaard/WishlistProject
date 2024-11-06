@@ -7,6 +7,10 @@ public class Wish {
     private String description;
     private double price;
 
+    public Wish () {
+
+    }
+
     public Wish(String name, int quantity, String description, double price) {
         this.name = name;
         this.quantity = quantity;
