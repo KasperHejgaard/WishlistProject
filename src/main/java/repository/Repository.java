@@ -10,6 +10,30 @@ public class Repository {
     String password = System.getenv("password");
     String user = System.getenv("user");
 
+
+    public Wish findWishByID(int id) {
+        Wish wish = new Wish();
+        String sql = "SELECT * FROM wish_list WHERE wishID = ?";
+
+        try (Connection con = DriverManager.getConnection(url, user, password)) {
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                wish.setWishID(rs.getInt("wishID"));
+                wish.setName(rs.getString("name"));
+                wish.setQuantity(rs.getInt("quantity"));
+                wish.setDescription(rs.getString("description"));
+                wish.setPrice(rs.getDouble("price"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return wish;
+    }
+
     public Wish createWish(String name, int quantity, String description, double price) {
         Wish wish = new Wish(name, quantity, description, price);
 
@@ -59,7 +83,23 @@ public class Repository {
         return wishes;
     }
 
+    public void updateWish(int wishID, String name, int quantity, String description, double price) {
+        String sqlUpdateWish = "UPDATE wish_list SET name = ?, quantity = ?, description = ?, price = ? WHERE wishID = ?";
 
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            PreparedStatement statement = connection.prepareStatement(sqlUpdateWish);
+            statement.setString(1, name);
+            statement.setInt(2, quantity);
+            statement.setString(3, description);
+            statement.setDouble(4, price);
+            statement.setInt(5, wishID);
+
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public int deleteWish(int id) {
         int updatedRows = 0;
