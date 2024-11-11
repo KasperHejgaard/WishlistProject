@@ -55,7 +55,7 @@ public class Controller {
         return "redirect:/wishes";
     }
 
-    //Delete
+    //DELETE WISH
 
     @PostMapping("delete/{id}")
     public String deleteWishById(@PathVariable int id) {
