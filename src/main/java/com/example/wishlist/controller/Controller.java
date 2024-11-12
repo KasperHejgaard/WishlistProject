@@ -1,9 +1,10 @@
-package controller;
+package com.example.wishlist.controller;
 
-import model.Wish;
+
+import com.example.wishlist.model.Wish;
+import com.example.wishlist.service.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import service.Service;
 
 import java.util.List;
 
@@ -86,4 +87,34 @@ public class Controller {
         service.deleteWish(id);
         return "redirect:/wish_list";
     }
+
+   @GetMapping("/register")
+    public String showRegistrationPage() {
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String registerUser(@RequestParam String email, @RequestParam String password, @RequestParam String role, Model model) {
+        service.registerUser(email, password, role);
+        return "redirect:/login";  // Redirect to login page after successful registration
+    }
+
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login";
+    }
+
+
+    @PostMapping("/login")
+    public String loginUser(@RequestParam String email, @RequestParam String password, Model model) {
+        boolean isAuthenticated = service.validateUserPassword(email, password);
+        if (isAuthenticated) {
+            return "redirect:/user/home";  // Redirect to user dashboard or home page
+        } else {
+            model.addAttribute("loginError", "Invalid email or password.");
+            return "login";
+        }
+    }
+
 }
+
