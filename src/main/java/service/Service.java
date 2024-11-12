@@ -13,7 +13,7 @@ public class Service {
     }
 
     public Wish findWishByID(int id) {
-        repository.findWishByID(id);
+        return repository.findWishByID(id);
     }
 
     public void createWish(String name, int quantity, String description, double price) {
@@ -21,7 +21,7 @@ public class Service {
     }
 
     public List<Wish> readWishes() {
-        repository.readWishes();
+        return repository.readWishes();
     }
 
     public void updateWish(int wishID, String name, int quantity, String description, double price) {

@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <link th:href="@{/style.css}" rel="stylesheet">
     <title>Create Wish</title>
 </head>
 <body>
+
+<h1>Create a wish</h1>
+
+<form th:action="@{/wish_list/update}" th:object="${wish}" method="post">
+    <!-- Navn på wish -->
+    <p><label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required/></p>
+    <br>
+
+    <!-- Quantity -->
+    <p><label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" th:field="*{quantity}" required/></p>
+    <br>
+
+    <!-- Beskrivelse af wish -->
+    <p><label for="description">Description:</label>
+    <textarea id="description" th:field="*{description}" rows="4" cols="50" required></textarea></p>
+    <br>
+
+    <!-- Pris -->
+    <p><label for="price">Price:</label>
+    <input type="number" id="price" th:field="*{price}" required></p>
+    <br>
+
+    <!-- Gem-knap -->
+    <button type="submit">Save</button>
+</form>
 
 </body>
 </html>
