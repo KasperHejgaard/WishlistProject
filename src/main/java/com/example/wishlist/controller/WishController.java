@@ -87,4 +87,14 @@ public class WishController {
         wishService.deleteWish(id);
         return "redirect:/wish_list";
     }
-}
+
+
+    @ExceptionHandler(Exception.class)
+    public String handleError(Model model, Exception exception){
+        model.addAttribute("message", exception.getMessage());
+        return "error";
+    }
+    }
+
+
+
