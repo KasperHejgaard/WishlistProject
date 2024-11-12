@@ -8,7 +8,7 @@
 
 <h1>Create a wish</h1>
 
-<form th:action="@{/wish_list/update}" th:object="${wish}" method="post">
+<form th:action="@{/wish_list/save}" th:object="${wish}" method="post">
     <!-- Navn på wish -->
     <p><label for="name">Name:</label>
     <input type="text" id="name" th:field="*{name}" required/></p>

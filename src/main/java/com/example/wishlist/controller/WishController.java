@@ -42,19 +42,19 @@ public class WishController {
     }
 
     @PostMapping("/save")
-    public String saveAttraction(@RequestParam String name,
+    public String saveWish(@RequestParam String name,
                                  @RequestParam int quantity,
                                  @RequestParam String description,
                                  @RequestParam double price) {
         System.out.println("Save method called with Name: " + name);
         wishService.createWish(name, quantity, description, price);
 
-        return "redirect:/wish_list";
+        return "redirect:/wish_list/wishes";
     }
 
     // READ WISHES
 
-    @GetMapping("/wish_list")
+    @GetMapping("/wishes")
     public String readWishes(Model model) {
         List<Wish> wishes = wishService.readWishes();
         model.addAttribute("wishes", wishes);
@@ -70,14 +70,15 @@ public class WishController {
         return "edit";
     }
 
-    @PostMapping("/update")
+    @PostMapping("/edit")
     public String updateWish(@RequestParam int wishID,
                              @RequestParam String name,
                              @RequestParam int quantity,
                              @RequestParam String description,
                              @RequestParam double price) {
+        System.out.println(name);
         wishService.updateWish(wishID, name, quantity, description, price);
-        return "redirect:/wish_list";
+        return "redirect:/wish_list/wishes";
     }
 
     //DELETE WISH
@@ -85,7 +86,7 @@ public class WishController {
     @PostMapping("delete/{id}")
     public String deleteWishById(@PathVariable int id) {
         wishService.deleteWish(id);
-        return "redirect:/wish_list";
+        return "redirect:/wish_list/wishes";
     }
 
 
