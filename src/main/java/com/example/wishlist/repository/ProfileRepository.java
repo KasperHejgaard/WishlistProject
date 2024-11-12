@@ -1,8 +1,4 @@
-package repository;
-
-import model.Profile;
-
-import javax.swing.tree.RowMapper;
+package com.example.wishlist.repository;
 
 public class ProfileRepository {
 

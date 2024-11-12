@@ -1,10 +1,13 @@
-package repository;
-import model.Wish;
+package com.example.wishlist.repository;
+import com.example.wishlist.model.Wish;
+import org.springframework.stereotype.Repository;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Repository {
+@Repository
+public class WishRepository {
 
     String url = System.getenv("url");
     String password = System.getenv("password");

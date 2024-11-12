@@ -1,6 +1,6 @@
-package service;
+package com.example.wishlist.service;
 
-import model.Profile;
+import com.example.wishlist.model.Profile;
 
 public class ProfileService {
 

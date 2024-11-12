@@ -1,23 +1,20 @@
-package controller;
+package com.example.wishlist.controller;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.http.HttpServletRequest;
-import model.Wish;
-import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.http.HttpStatus;
+import com.example.wishlist.model.Wish;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import service.Service;
+import com.example.wishlist.service.WishService;
 
 import java.util.List;
 
-@org.springframework.stereotype.Controller
+@Controller
 @RequestMapping("/wish_list")
-public class Controller {
-    private final Service service;
+public class WishController {
+    private final WishService wishService;
 
-    public Controller(Service service) {
-        this.service = service;
+    public WishController(WishService wishService) {
+        this.wishService = wishService;
     }
 
     // SESSION
@@ -50,7 +47,7 @@ public class Controller {
                                  @RequestParam String description,
                                  @RequestParam double price) {
         System.out.println("Save method called with Name: " + name);
-        service.createWish(name, quantity, description, price);
+        wishService.createWish(name, quantity, description, price);
 
         return "redirect:/wish_list";
     }
@@ -59,7 +56,7 @@ public class Controller {
 
     @GetMapping("/wish_list")
     public String readWishes(Model model) {
-        List<Wish> wishes = service.readWishes();
+        List<Wish> wishes = wishService.readWishes();
         model.addAttribute("wishes", wishes);
         return "readWishes";
     }
@@ -68,7 +65,7 @@ public class Controller {
 
     @GetMapping("/{id}/edit")
     public String editWish(@PathVariable("id") int wishID, Model model) {
-        Wish wish = service.findWishByID(wishID);
+        Wish wish = wishService.findWishByID(wishID);
         model.addAttribute("wish", wish);
         return "edit";
     }
@@ -79,7 +76,7 @@ public class Controller {
                              @RequestParam int quantity,
                              @RequestParam String description,
                              @RequestParam double price) {
-        service.updateWish(wishID, name, quantity, description, price);
+        wishService.updateWish(wishID, name, quantity, description, price);
         return "redirect:/wish_list";
     }
 
@@ -87,7 +84,7 @@ public class Controller {
 
     @PostMapping("delete/{id}")
     public String deleteWishById(@PathVariable int id) {
-        service.deleteWish(id);
+        wishService.deleteWish(id);
         return "redirect:/wish_list";
     }
 
