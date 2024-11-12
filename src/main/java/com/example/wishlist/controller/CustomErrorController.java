@@ -1,4 +1,4 @@
-package controller;
+package com.example.wishlist.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
