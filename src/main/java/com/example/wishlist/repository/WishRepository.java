@@ -1,5 +1,5 @@
-package repository;
-import model.Wish;
+package com.example.wishlist.repository;
+import com.example.wishlist.model.Wish;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;

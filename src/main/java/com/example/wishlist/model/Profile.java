@@ -1,4 +1,4 @@
-package model;
+package com.example.wishlist.model;
 
 public class Profile {
     private int profileID;

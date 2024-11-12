@@ -1,10 +1,10 @@
-package controller;
+package com.example.wishlist.controller;
 
-import model.Wish;
+import com.example.wishlist.model.Wish;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import service.WishService;
+import com.example.wishlist.service.WishService;
 
 import java.util.List;
 
