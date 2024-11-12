@@ -94,6 +94,36 @@ public class WishController {
         model.addAttribute("message", exception.getMessage());
         return "error";
     }
+
+    @GetMapping("/register")
+    public String showRegistrationPage() {
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String registerUser(@RequestParam String email, @RequestParam String password, @RequestParam String role, Model model) {
+        wishService.registerUser(email, password, role);
+        return "redirect:/login";  // Redirect to login page after successful registration
+    }
+
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login";
+    }
+
+
+    @PostMapping("/login")
+    public String loginUser(@RequestParam String email, @RequestParam String password, Model model) {
+        boolean isAuthenticated = wishService.validateUserPassword(email, password);
+        if (isAuthenticated) {
+            return "redirect:/user/home";  // Redirect to user dashboard or home page
+        } else {
+            model.addAttribute("loginError", "Invalid email or password.");
+            return "login";
+        }
+    }
+
+
     }
 
 
