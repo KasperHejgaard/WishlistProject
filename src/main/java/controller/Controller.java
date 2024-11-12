@@ -1,6 +1,10 @@
 package controller;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpServletRequest;
 import model.Wish;
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import service.Service;
@@ -86,4 +90,14 @@ public class Controller {
         service.deleteWish(id);
         return "redirect:/wish_list";
     }
-}
+
+
+    @ExceptionHandler(Exception.class)
+    public String handleError(Model model, Exception exception){
+        model.addAttribute("message", exception.getMessage());
+        return "error";
+    }
+    }
+
+
+
