@@ -6,16 +6,20 @@ public class Wish {
     private int quantity;
     private String description;
     private double price;
+    private String link;
+    private boolean reserved;
 
     public Wish () {
 
     }
 
-    public Wish(String name, int quantity, String description, double price) {
+    public Wish(String name, int quantity, String description, double price, String link, boolean reserved) {
         this.name = name;
         this.quantity = quantity;
         this.description = description;
         this.price = price;
+        this.link = link;
+        this.reserved = reserved;
     }
 
 
@@ -57,6 +61,22 @@ public class Wish {
 
     public void setWishID(int wishID) {
         this.wishID = wishID;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public boolean getReserved() {
+        return reserved;
+    }
+
+    public void setReserved(boolean reserved) {
+        this.reserved = reserved;
     }
 }
 

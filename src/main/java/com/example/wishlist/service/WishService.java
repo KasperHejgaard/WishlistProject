@@ -23,16 +23,16 @@ public class WishService {
         return wishRepository.findWishByID(id);
     }
 
-    public void createWish(String name, int quantity, String description, double price) {
-        wishRepository.createWish(name, quantity, description, price);
+    public void createWish(String name, int quantity, String description, double price, String link, boolean reserved) {
+        wishRepository.createWish(name, quantity, description, price, link, reserved);
     }
 
     public List<Wish> readWishes() {
         return wishRepository.readWishes();
     }
 
-    public void updateWish(int wishID, String name, int quantity, String description, double price) {
-        wishRepository.updateWish(wishID, name, quantity, description, price);
+    public void updateWish(int wishID, String name, int quantity, String description, double price, String link, boolean reserved) {
+        wishRepository.updateWish(wishID, name, quantity, description, price, link, reserved);
     }
 
     public void deleteWish(int id){
