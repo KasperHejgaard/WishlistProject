@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <title>WishCloud</title>
 </head>
+
 <body>
+<div class="rw">
 <table>
     <thead>
     <tr>
@@ -15,7 +17,8 @@
         <th> Price </th>
         <th> Link </th>
         <th> Reserved? </th>
-        <th> </th>
+        <th>  </th>
+        <th>  </th>
     </tr>
     </thead>
     <tbody>
@@ -28,12 +31,12 @@
         <td><span th:text="${wish.reserved} ? 'Reserved' : 'Not reserved'"}> Reserved </span></td>
         <td>
             <a th:href="@{'/wish_list/' + ${wish.getWishID()} + '/edit'}">
-                <input type="button" value="Edit">
+                <input type="button" class="edit-button" value="Edit">
             </a>
         </td>
         <td>
             <form th:action="@{/wish_list/delete/{id}(id=${wish.getWishID()})}" method="post">
-                <button type="submit">Delete</button>
+                <button type="submit" class="delete-button">Delete</button>
             </form></td>
 
     </tr>
@@ -42,6 +45,7 @@
 <a th:href="@{'/wish_list' + '/create'}">
     <input type="button" value="Create wish">
 </a>
-
+</div>
 </body>
+
 </html>

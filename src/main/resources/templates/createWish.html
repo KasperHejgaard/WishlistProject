@@ -5,7 +5,7 @@
     <title>Create Wish</title>
 </head>
 <body>
-
+<div class="cw">
 <h1>Create a wish</h1>
 
 <form th:action="@{/wish_list/save}" th:object="${wish}" method="post">
@@ -42,10 +42,15 @@
 
     <!-- Gem-knap -->
     <button type="submit">Save</button>
+
+    <a href="/wish_list/wishes">
+        <button type="button" class="button">Back to wishes</button>
+    </a>
 </form>
-<div th:if="${wish.link}">
+<div class="link-section" th:if="${wish.link}">
     <p>Check the link for this wish:</p>
     <a th:href="${wish.link}" target="_blank" th:text="${wish.link}">Visit Link</a>
+</div>
 </div>
 </body>
 </html>

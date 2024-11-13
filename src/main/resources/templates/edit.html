@@ -6,34 +6,52 @@
     <title>Edit/update wish</title>
 </head>
 <body>
-<form action="/wish_list/edit" method="post">
-    <p><input th:type="hidden" id="wishID" th:name="wishID" th:value="${wish.getWishID()}"/></p>
-    <br>
+<div class="edit">
+    <form action="/wish_list/edit" method="post" class="form-container">
+        <!-- Hidden input for wish ID -->
+        <input type="hidden" id="wishID" th:name="wishID" th:value="${wish.getWishID()}"/>
 
-    <p><label for="name">Name:</label>
-    <input type="text" id="name" th:name="name" th:value="${wish.name}" required/></p>
-    <br>
+        <!-- Name Field -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:name="name" th:value="${wish.name}" required/>
+        </div>
 
-    <p><label for="quantity">Quantity:</label>
-    <input type="number" id="quantity" th:name="quantity" th:value="${wish.quantity}" required></p>
-    <br>
+        <!-- Quantity Field -->
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" th:name="quantity" th:value="${wish.quantity}" required/>
+        </div>
 
-    <p><label for="description">Description:</label>
-        <input type="text" id="description" th:name="description" th:value="${wish.description}" required></p>
-    <br>
+        <!-- Description Field -->
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" id="description" th:name="description" th:value="${wish.description}" required/>
+        </div>
 
-    <p><label for="price">Price:</label>
-        <input type="number" id="price" th:name="price" th:value="${wish.price}" required></p>
-    <br> <p><label for="link">Link:</label>
-        <input type="text" id="link" th:name="link" th:value="${wish.link}" required></p>
-    <br>
-    <p><label for="reserved">Reserved:</label>
-        <input type="hidden" name="reserved" value="false" />
-        <!-- Checkbox to set reserved to true if checked -->
-        <input type="checkbox" id="reserved" th:name="reserved" th:checked="${wish.reserved}" value="true" /> Yes</p>
-    <br>
+        <!-- Price Field -->
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" th:name="price" th:value="${wish.price}" required/>
+        </div>
 
+        <!-- Link Field -->
+        <div class="form-group">
+            <label for="link">Link:</label>
+            <input type="text" id="link" th:name="link" th:value="${wish.link}" required/>
+        </div>
+
+        <!-- Reserved Checkbox -->
+        <div class="form-group">
+            <label for="reserved">Reserved:</label>
+            <input type="hidden" name="reserved" value="false" />
+            <input type="checkbox" id="reserved" th:name="reserved" th:checked="${wish.reserved}" value="true"/> Yes
+        </div>
+<div class="cw">
     <button type="submit">Update wish</button>
+</div>
+
 </form>
+</div>
 </body>
 </html>
