@@ -37,10 +37,10 @@ public class WishRepository {
         return wish;
     }
 
-    public Wish createWish(String name, int quantity, String description, double price) {
-        Wish wish = new Wish(name, quantity, description, price);
+    public Wish createWish(String name, int quantity, String description, double price, String link, boolean reserved) {
+        Wish wish = new Wish(name, quantity, description, price, link, reserved);
 
-        String sqlCreateWish = "INSERT INTO wish_list (name, quantity, description, price) VALUES(?,?,?,?)";
+        String sqlCreateWish = "INSERT INTO wish_list (name, quantity, description, price, link, reserved) VALUES(?,?,?,?,?,?)";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
 
@@ -49,6 +49,8 @@ public class WishRepository {
             statement.setInt(2, wish.getQuantity());
             statement.setString(3, wish.getDescription());
             statement.setDouble(4, wish.getPrice());
+            statement.setString(5, wish.getLink());
+            statement.setBoolean(6, wish.getReserved());
 
             statement.executeUpdate();
 
@@ -78,6 +80,8 @@ public class WishRepository {
                 wish.setDescription(rs.getString("description"));
                 wish.setQuantity(rs.getInt("quantity"));
                 wish.setPrice(rs.getDouble("price"));
+                wish.setLink(rs.getString("link"));
+                wish.setReserved(rs.getBoolean("Reserved"));
                 wishes.add(wish);
             }
         } catch (Exception e) {
@@ -86,8 +90,8 @@ public class WishRepository {
         return wishes;
     }
 
-    public void updateWish(int wishID, String name, int quantity, String description, double price) {
-        String sqlUpdateWish = "UPDATE wish_list SET name = ?, quantity = ?, description = ?, price = ? WHERE wishID = ?";
+    public void updateWish(int wishID, String name, int quantity, String description, double price, String link, boolean reserved) {
+        String sqlUpdateWish = "UPDATE wish_list SET name = ?, quantity = ?, description = ?, price = ?, link = ?, reserved = ? WHERE wishID = ?";
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             PreparedStatement statement = connection.prepareStatement(sqlUpdateWish);
@@ -95,7 +99,10 @@ public class WishRepository {
             statement.setInt(2, quantity);
             statement.setString(3, description);
             statement.setDouble(4, price);
-            statement.setInt(5, wishID);
+            statement.setString(5, link);
+            statement.setBoolean(6, reserved);
+            statement.setInt(7, wishID);
+
 
             statement.executeUpdate();
 

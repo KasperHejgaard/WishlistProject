@@ -45,9 +45,11 @@ public class WishController {
     public String saveWish(@RequestParam String name,
                                  @RequestParam int quantity,
                                  @RequestParam String description,
-                                 @RequestParam double price) {
+                                 @RequestParam double price,
+                                 @RequestParam String link,
+                                 @RequestParam boolean reserved) {
         System.out.println("Save method called with Name: " + name);
-        wishService.createWish(name, quantity, description, price);
+        wishService.createWish(name, quantity, description, price, link, reserved);
 
         return "redirect:/wish_list/wishes";
     }
@@ -75,9 +77,11 @@ public class WishController {
                              @RequestParam String name,
                              @RequestParam int quantity,
                              @RequestParam String description,
-                             @RequestParam double price) {
+                             @RequestParam double price,
+                             @RequestParam String link,
+                             @RequestParam boolean reserved) {
         System.out.println(name);
-        wishService.updateWish(wishID, name, quantity, description, price);
+        wishService.updateWish(wishID, name, quantity, description, price, link, reserved);
         return "redirect:/wish_list/wishes";
     }
 
@@ -123,8 +127,6 @@ public class WishController {
             return "login";
         }
     }
-
-
     }
 
 

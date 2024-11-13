@@ -28,10 +28,24 @@
     <p><label for="price">Price:</label>
     <input type="number" id="price" th:field="*{price}" required></p>
     <br>
+    <!-- link -->
+    <br>
+    <p><label for="link">Link:</label>
+        <input type="text" id="link" th:field="*{link}" placeholder="https://example.com" required>
+    </p>
+    <br>
+    <!-- reserved -->
+    <p><label for="reserved">Reserved:</label>
+        <input type="hidden" name="reserved" value="false" />
+        <input type="checkbox" id="reserved" th:field="*{reserved}" value="true" /></p>
+    <br>
 
     <!-- Gem-knap -->
     <button type="submit">Save</button>
 </form>
-
+<div th:if="${wish.link}">
+    <p>Check the link for this wish:</p>
+    <a th:href="${wish.link}" target="_blank" th:text="${wish.link}">Visit Link</a>
+</div>
 </body>
 </html>
