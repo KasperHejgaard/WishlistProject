@@ -9,10 +9,21 @@ import java.util.List;
 @Repository
 public class WishRepository {
 
-    String url = System.getenv("url");
-    String password = System.getenv("password");
-    String user = System.getenv("user");
+    public String url = System.getenv("url");
+    public String password = System.getenv("password");
+    public String user = System.getenv("user");
 
+    public String getUrl() {
+        return url;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUser() {
+        return user;
+    }
 
     public Wish findWishByID(int id) {
         Wish wish = new Wish();
