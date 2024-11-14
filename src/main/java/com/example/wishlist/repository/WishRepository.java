@@ -1,5 +1,6 @@
 package com.example.wishlist.repository;
 import com.example.wishlist.model.Wish;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -9,9 +10,18 @@ import java.util.List;
 @Repository
 public class WishRepository {
 
-    public String url = System.getenv("url");
+    /*public String url = System.getenv("url");
     public String password = System.getenv("password");
-    public String user = System.getenv("user");
+    public String user = System.getenv("user");*/
+
+    @Value("${spring.datasource.url}")
+    private String url;
+
+    @Value("${spring.datasource.username}")
+    private String user;
+
+    @Value("${spring.datasource.password}")
+    private String password;
 
     public String getUrl() {
         return url;

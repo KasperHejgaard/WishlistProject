@@ -18,7 +18,7 @@ class WishListApplicationTests {
     private WishRepository wishRepository;
     private String jdbcUrl = "jdbc:h2:mem:testdb";
 
-    @BeforeEach
+    @Autowired
     public void setUp() throws SQLException {
         Connection connection = DriverManager.getConnection(jdbcUrl, "sa", "");
 
