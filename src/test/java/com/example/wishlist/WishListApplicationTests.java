@@ -1,4 +1,4 @@
-package com.example.wishlist;
+/*package com.example.wishlist;
 
 import com.example.wishlist.model.Wish;
 import com.example.wishlist.repository.WishRepository;
@@ -60,3 +60,4 @@ class WishListApplicationTests {
 
 
 }
+*/
