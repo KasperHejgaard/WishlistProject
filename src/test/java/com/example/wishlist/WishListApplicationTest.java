@@ -14,7 +14,7 @@ class WishListApplicationTest {
         }
 
         @Test
-        void addAttraction() {
+        void updateWish() {
             Assertions.assertTrue(true);
         }
 
