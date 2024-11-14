@@ -23,18 +23,6 @@ public class WishRepository {
     @Value("${spring.datasource.password}")
     private String password;
 
-    public String getUrl() {
-        return url;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
     public Wish findWishByID(int id) {
         Wish wish = new Wish();
         String sql = "SELECT * FROM wish_list WHERE wishID = ?";
