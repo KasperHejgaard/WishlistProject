@@ -21,7 +21,7 @@ class WishListApplicationTests {
     @BeforeEach
     public void setUp() throws SQLException {
         Connection connection = DriverManager.getConnection(jdbcUrl, "sa", "");
-       connection.createStatement().execute("CREATE TABLE wish_list (wishID INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), quantity INT, description VARCHAR(255), price DOUBLE, link VARCHAR(255), reserved BOOLEAN)");
+
 
         wishRepository = new WishRepository();
         wishRepository.url = jdbcUrl;
