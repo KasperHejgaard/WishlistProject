@@ -1,6 +1,7 @@
-package com.example.wishlist.repository;
+/*package com.example.wishlist.repository;
 
 import com.example.wishlist.model.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -8,9 +9,14 @@ import java.util.Optional;
 @Repository
 public class UserRepository{
 
-    String url = System.getenv("url");
-    String password = System.getenv("password");
-    String root = System.getenv("root");
+    @Value("${spring.datasource.url}")
+    private String url;
+
+    @Value("${spring.datasource.username}")
+    private String user;
+
+    @Value("${spring.datasource.password}")
+    private String password;
 
     public Optional<User> findByEmail(String email) {
         String sqlFindEmail = "SELECT * FROM users WHERE email = ?";
@@ -37,7 +43,7 @@ public class UserRepository{
         String sqlSaveUser = "INSERT INTO users (email, password, role) VALUES (?, ?, ?)";
 
         try {
-            Connection con = DriverManager.getConnection(url, password, root);
+            Connection con = DriverManager.getConnection(url, password, user);
             PreparedStatement statement = con.prepareStatement(sqlSaveUser);
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
@@ -48,3 +54,4 @@ public class UserRepository{
         }
     }
 }
+ */
