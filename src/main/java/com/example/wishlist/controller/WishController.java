@@ -43,12 +43,11 @@ public class WishController {
 
     @PostMapping("/save")
     public String saveWish(@RequestParam String name,
-                                 @RequestParam int quantity,
-                                 @RequestParam String description,
-                                 @RequestParam double price,
-                                 @RequestParam String link,
-                                 @RequestParam boolean reserved) {
-        System.out.println("Save method called with Name: " + name);
+                           @RequestParam int quantity,
+                           @RequestParam String description,
+                           @RequestParam double price,
+                           @RequestParam String link,
+                           @RequestParam boolean reserved) {
         wishService.createWish(name, quantity, description, price, link, reserved);
 
         return "redirect:/wish_list/wishes";
@@ -80,7 +79,6 @@ public class WishController {
                              @RequestParam double price,
                              @RequestParam String link,
                              @RequestParam boolean reserved) {
-        System.out.println(name);
         wishService.updateWish(wishID, name, quantity, description, price, link, reserved);
         return "redirect:/wish_list/wishes";
     }
@@ -95,7 +93,7 @@ public class WishController {
 
 
     @ExceptionHandler(Exception.class)
-    public String handleError(Model model, Exception exception){
+    public String handleError(Model model, Exception exception) {
         model.addAttribute("message", exception.getMessage());
         return "error";
     }
@@ -127,7 +125,7 @@ public class WishController {
             return "login";
         }
     }
-    }
+}
 
 
 
